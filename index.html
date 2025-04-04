@@ -233,10 +233,12 @@ async function loadPuzzleData() {
         const today = new Date();
         const monthDay = `${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
+        // Find today's puzzle or use fallback
+        let selectedPuzzle;  // Declare the variable only once
+        
         // First try to find a puzzle specifically for this date
-        let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
+        selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
 
-        // If no specific date match is found, use the fallback method
         if (!selectedPuzzle) {
             // Use the day of year as a fallback
             const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
@@ -244,18 +246,27 @@ async function loadPuzzleData() {
             selectedPuzzle = puzzlesData[puzzleIndex];
         }
 
-        // Complete the gameData setup
         gameData = {
             ...selectedPuzzle,
             getClueDataByBoxId: function(id) {
                 for (const quote of this.quotes) { 
-                    if (quote.clues[id]) return quote.clues[id]; 
+                    if (quote.clues[id]) {
+                        if (quote.clues[id].solved === undefined) {
+                            quote.clues[id].solved = false;
+                        }
+                        return quote.clues[id]; 
+                    }
                 } 
                 return null;
             },
             getQuoteByBoxId: function(id) {
                 for (const quote of this.quotes) { 
-                    if (quote.clues[id]) return quote; 
+                    if (quote.clues[id]) {
+                        if (quote.quoteSolved === undefined) {
+                            quote.quoteSolved = false;
+                        }
+                        return quote; 
+                    }
                 } 
                 return null;
             },
@@ -274,22 +285,10 @@ async function loadPuzzleData() {
                 return solvedClueIds;
             }
         };
-
-        // Initialize solved property for all clues
-        for (const quote of gameData.quotes) {
-            for (const clueId in quote.clues) {
-                quote.clues[clueId].solved = false;
-            }
-            quote.quoteSolved = false;
-        }
-
-        // Set total quotes count
-        totalQuotes = gameData.quotes.length;
         
-        // Now initialize the game
+        totalQuotes = gameData.quotes.length;
         initGame();
         clearMessage();
-        
     } catch (error) {
         console.error('Error loading puzzle data:', error);
         displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
