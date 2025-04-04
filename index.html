@@ -218,74 +218,74 @@ function getTodaysPuzzleId() {
 }
 
     // Load puzzles from JSON file and initialize game
-    async function loadPuzzleData() {
-        try {
-            displayMessage('Loading puzzle...', 'text-blue-600');
-            const response = await fetch('puzzles.json');
-            if (!response.ok) {
-                throw new Error('Failed to load puzzles data');
-            }
-            const puzzlesData = await response.json();
-            if (!puzzlesData || !puzzlesData.puzzles) {
-                throw new Error('Puzzles data is undefined or malformed');
-            }
-            let selectedPuzzle;
-            if (currentPuzzleId) {
-                selectedPuzzle = puzzlesData.puzzles.find(p => p.id === currentPuzzleId);
-            }
-            if (!selectedPuzzle) {
-                const today = new Date();
-                const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-                const puzzleIndex = dayOfYear % puzzlesData.puzzles.length;
-                selectedPuzzle = puzzlesData.puzzles[puzzleIndex];
-            }
-            gameData = {
-                ...selectedPuzzle,
-                getClueDataByBoxId: function(id) {
-                    for (const quote of this.quotes) { 
-                        if (quote.clues[id]) {
-                            if (quote.clues[id].solved === undefined) {
-                                quote.clues[id].solved = false;
-                            }
-                            return quote.clues[id]; 
+   async function loadPuzzleData() {
+    try {
+        displayMessage('Loading puzzle...', 'text-blue-600');
+        const response = await fetch('puzzles.json');
+        if (!response.ok) {
+            throw new Error('Failed to load puzzles data');
+        }
+        const puzzlesData = await response.json();
+        if (!puzzlesData || !puzzlesData.puzzles) {
+            throw new Error('Puzzles data is undefined or malformed');
+        }
+        let selectedPuzzle;
+        if (currentPuzzleId) {
+            selectedPuzzle = puzzlesData.puzzles.find(p => p.id === currentPuzzleId);
+        }
+        if (!selectedPuzzle) {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const puzzleIndex = dayOfYear % puzzlesData.puzzles.length;
+            selectedPuzzle = puzzlesData.puzzles[puzzleIndex];
+        }
+        gameData = {
+            ...selectedPuzzle,
+            getClueDataByBoxId: function(id) {
+                for (const quote of this.quotes) { 
+                    if (quote.clues[id]) {
+                        if (quote.clues[id].solved === undefined) {
+                            quote.clues[id].solved = false;
                         }
-                    } 
-                    return null;
-                },
-                getQuoteByBoxId: function(id) {
-                    for (const quote of this.quotes) { 
-                        if (quote.clues[id]) {
-                            if (quote.quoteSolved === undefined) {
-                                quote.quoteSolved = false;
-                            }
-                            return quote; 
+                        return quote.clues[id]; 
+                    }
+                } 
+                return null;
+            },
+            getQuoteByBoxId: function(id) {
+                for (const quote of this.quotes) { 
+                    if (quote.clues[id]) {
+                        if (quote.quoteSolved === undefined) {
+                            quote.quoteSolved = false;
                         }
-                    } 
-                    return null;
-                },
-                getAllUnsolvedQuotes: function() {
-                    return this.quotes.filter(quote => !quote.quoteSolved);
-                },
-                getAllSolvedClues: function() {
-                    const solvedClueIds = [];
-                    for (const quote of this.quotes) {
-                        for (const clueId in quote.clues) {
-                            if (quote.clues[clueId].solved && !quote.quoteSolved) {
-                                solvedClueIds.push(parseInt(clueId));
-                            }
+                        return quote; 
+                    }
+                } 
+                return null;
+            },
+            getAllUnsolvedQuotes: function() {
+                return this.quotes.filter(quote => !quote.quoteSolved);
+            },
+            getAllSolvedClues: function() {
+                const solvedClueIds = [];
+                for (const quote of this.quotes) {
+                    for (const clueId in quote.clues) {
+                        if (quote.clues[clueId].solved && !quote.quoteSolved) {
+                            solvedClueIds.push(parseInt(clueId));
                         }
                     }
-                    return solvedClueIds;
                 }
-            };
-            totalQuotes = gameData.quotes.length;
-            initGame();
-            clearMessage();
-        } catch (error) {
-            console.error('Error loading puzzle data:', error);
-            displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
-        }
+                return solvedClueIds;
+            }
+        };
+        totalQuotes = gameData.quotes.length;
+        initGame();
+        clearMessage();
+    } catch (error) {
+        console.error('Error loading puzzle data:', error);
+        displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
     }
+}
 
         /**
  * Initializes the game board.
