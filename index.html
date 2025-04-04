@@ -217,8 +217,7 @@ function getTodaysPuzzleId() {
     return Math.abs(hash).toString();
 }
 
-    // Load puzzles from JSON file and initialize game
-   async function loadPuzzleData() {
+ async function loadPuzzleData() {
     try {
         displayMessage('Loading puzzle...', 'text-blue-600');
         const response = await fetch('puzzles.json');
@@ -229,16 +228,12 @@ function getTodaysPuzzleId() {
         if (!puzzlesData || !puzzlesData.puzzles) {
             throw new Error('Puzzles data is undefined or malformed');
         }
-        let selectedPuzzle;
-        if (currentPuzzleId) {
-            selectedPuzzle = puzzlesData.puzzles.find(p => p.id === currentPuzzleId);
-        }
-        if (!selectedPuzzle) {
-            const today = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-            const puzzleIndex = dayOfYear % puzzlesData.puzzles.length;
-            selectedPuzzle = puzzlesData.puzzles[puzzleIndex];
-        }
+
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+        const puzzleIndex = dayOfYear % puzzlesData.puzzles.length;
+        const selectedPuzzle = puzzlesData.puzzles[puzzleIndex];
+
         gameData = {
             ...selectedPuzzle,
             getClueDataByBoxId: function(id) {
