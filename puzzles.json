@@ -1,0 +1,112 @@
+{
+  "puzzles": [
+    {
+      "id": "hamlet",
+      "sourceTypeEmoji": "🎭",
+      "sourceName": "Hamlet",
+      "gridSize": { "rows": 3, "cols": 4 },
+      "quotes": [
+        {
+          "id": 1,
+          "solution": "To be or not to be, that is the question.",
+          "correctSequence": [2, 1, 4, 6, 5],
+          "clues": {
+            "2": { "text": "Type of pencil (2,2)", "solution": "To be" }, 
+            "1": { "text": "Either... (2)", "solution": "or" }, 
+            "4": { "text": "Different type of pencil (3,2,2)", "solution": "not to be" }, 
+            "6": { "text": "Not this (4)", "solution": "that" }, 
+            "5": { "text": "If x...., what is the answer? (4,2,7)", "solution": "is the question" }
+          }
+        },
+        {
+          "id": 2,
+          "solution": "Alas, poor Yorick.",
+          "correctSequence": [7, 8, 3],
+          "clues": {
+            "7": { "text": "Sigh (4)", "solution": "Alas" }, 
+            "8": { "text": "Opposite of rich (4)", "solution": "poor" }, 
+            "3": { "text": "Ickory anag. (6)", "solution": "Yorick" }
+          }
+        },
+        {
+          "id": 3,
+          "solution": "A fellow of infinite jest.",
+          "correctSequence": [10, 9, 12, 11],
+          "clues": {
+            "10": { "text": "tenured professor, Brit. (1, 6)", "solution": "a fellow" }, 
+            "9": { "text": "prep. (2)", "solution": "of" }, 
+            "12": { "text": "lots and lots (8)", "solution": "infinite" }, 
+            "11": { "text": "joke (4)", "solution": "jest" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sonnet-18",
+      "sourceTypeEmoji": "📜",
+      "sourceName": "Sonnet 18",
+      "gridSize": { "rows": 3, "cols": 4 },
+      "quotes": [
+        {
+          "id": 1,
+          "solution": "Shall I compare thee to a summer's day?",
+          "correctSequence": [2, 3, 1, 6, 5, 4, 7],
+          "clues": {
+            "2": { "text": "Future state (5)", "solution": "Shall" }, 
+            "3": { "text": "One (1)", "solution": "a" }, 
+            "1": { "text": "e.g. bigger", "solution": "compare" }, 
+            "6": { "text": "Old you (4)", "solution": "Thee" }, 
+            "5": { "text": "2+1 (2,1)", "solution": "to a" }, 
+            "4": { "text": "June 21st (7,3)", "solution": "summer's day" },
+            "7": { "text": "Rising intonation (1)","solution": "?" }
+          }
+        },
+        {
+          "id": 2,
+          "solution": "But thy eternal summer shall not fade",
+          "correctSequence": [8, 10, 9, 12, 11],
+          "clues": {
+            "8": { "text": "Contrast (3)", "solution": "But" }, 
+            "10": { "text": "Old your (3)", "solution": "thy" }, 
+            "9": { "text": "Forever (7)", "solution": "eternal" }, 
+            "12": { "text": "Season (6)", "solution": "summer" }, 
+            "11": { "text": "Longer shan't, shorter lighten (5,3,4)", "solution": "shall not fade" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "macbeth",
+      "sourceTypeEmoji": "👑",
+      "sourceName": "Macbeth",
+      "gridSize": { "rows": 3, "cols": 4 },
+      "quotes": [
+        {
+          "id": 1,
+          "solution": "Double, double toil and trouble.",
+          "correctSequence": [1, 3, 2, 4, 6],
+          "clues": {
+            "1": { "text": "Twice (6)", "solution": "Double" }, 
+            "3": { "text": "Repeat previous word (6)", "solution": "double" }, 
+            "2": { "text": "Hard work (4)", "solution": "toil" }, 
+            "4": { "text": "Plus (3)", "solution": "and" }, 
+            "6": { "text": "Problem (7)", "solution": "trouble" }
+          }
+        },
+        {
+          "id": 2,
+          "solution": "Fair is foul, and foul is fair.",
+          "correctSequence": [5, 8, 9, 11, 10, 7],
+          "clues": {
+            "5": { "text": "Just, or beautiful (4)", "solution": "Fair" }, 
+            "8": { "text": "Third person of 'to be' (2)", "solution": "is" }, 
+            "9": { "text": "Ugly or offensive (4)", "solution": "foul" }, 
+            "11": { "text": "And (3)", "solution": "and" }, 
+            "10": { "text": "Same as box 9 (4)", "solution": "foul" }, 
+            "7": { "text": "Same as box 5 (4)", "solution": "fair" }
+          }
+        }
+      ]
+    }
+  ]
+}
