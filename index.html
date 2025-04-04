@@ -234,18 +234,57 @@ async function loadPuzzleData() {
         const puzzleIndex = dayOfYear % puzzlesData.length;
         const selectedPuzzle = puzzlesData[puzzleIndex];
 
-        // Rest of the function remains the same...
+        // Complete the gameData setup
         gameData = {
             ...selectedPuzzle,
-            // ... rest of the gameData setup
+            getClueDataByBoxId: function(id) {
+                for (const quote of this.quotes) { 
+                    if (quote.clues[id]) return quote.clues[id]; 
+                } 
+                return null;
+            },
+            getQuoteByBoxId: function(id) {
+                for (const quote of this.quotes) { 
+                    if (quote.clues[id]) return quote; 
+                } 
+                return null;
+            },
+            getAllUnsolvedQuotes: function() {
+                return this.quotes.filter(quote => !quote.quoteSolved);
+            },
+            getAllSolvedClues: function() {
+                const solvedClueIds = [];
+                for (const quote of this.quotes) {
+                    for (const clueId in quote.clues) {
+                        if (quote.clues[clueId].solved && !quote.quoteSolved) {
+                            solvedClueIds.push(parseInt(clueId));
+                        }
+                    }
+                }
+                return solvedClueIds;
+            }
         };
-        // ...
+
+        // Initialize solved property for all clues
+        for (const quote of gameData.quotes) {
+            for (const clueId in quote.clues) {
+                quote.clues[clueId].solved = false;
+            }
+            quote.quoteSolved = false;
+        }
+
+        // Set total quotes count
+        totalQuotes = gameData.quotes.length;
+        
+        // Now initialize the game
+        initGame();
+        clearMessage();
+        
     } catch (error) {
         console.error('Error loading puzzle data:', error);
         displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
     }
 }
-
         /**
  * Initializes the game board.
  */
