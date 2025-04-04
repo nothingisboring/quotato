@@ -1,6 +1,7 @@
 [
   {
     "id": "hamlet",
+     "order": 1,
     "sourceTypeEmoji": "🎭",
     "sourceName": "Hamlet",
     "gridSize": {
@@ -96,6 +97,7 @@
   },
   {
     "id": "sonnet-18",
+    "order": 2,
     "sourceTypeEmoji": "📜",
     "sourceName": "Sonnet 18",
     "gridSize": {
@@ -183,6 +185,7 @@
   },
   {
     "id": "macbeth",
+    "order": 3,
     "sourceTypeEmoji": "👑",
     "sourceName": "Macbeth",
     "gridSize": {
@@ -265,6 +268,7 @@
   },
   {
     "sourceName": "The Big Lebowski",
+    "order": 4,
     "id": "the-big-lebowski",
     "sourceTypeEmoji": "🎬",
     "gridSize": {
