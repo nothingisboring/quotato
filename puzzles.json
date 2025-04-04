@@ -53,7 +53,7 @@
           "correctSequence": [2, 3, 1, 6, 5, 4, 7],
           "clues": {
             "2": { "text": "Future state (5)", "solution": "Shall" }, 
-            "3": { "text": "One (1)", "solution": "a" }, 
+            "3": { "text": "One (1)", "solution": "I" }, 
             "1": { "text": "e.g. bigger", "solution": "compare" }, 
             "6": { "text": "Old you (4)", "solution": "Thee" }, 
             "5": { "text": "2+1 (2,1)", "solution": "to a" }, 
