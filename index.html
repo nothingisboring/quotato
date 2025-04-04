@@ -228,12 +228,12 @@ async function loadPuzzleData() {
         if (!Array.isArray(puzzlesData)) {
             throw new Error('Puzzles data is undefined or malformed');
         }
-        const today = new Date();
-        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-        const puzzleIndex = dayOfYear % puzzlesData.length;
-        const selectedPuzzle = puzzlesData[puzzleIndex];
 
- // First try to find a puzzle specifically for this date
+        // Get today's date in MM-DD format
+        const today = new Date();
+        const monthDay = `${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+
+        // First try to find a puzzle specifically for this date
         let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
 
         // If no specific date match is found, use the fallback method
