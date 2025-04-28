@@ -413,19 +413,19 @@
         "solution": "I am the walrus.",
         "correctSequence": [
           3,
-          7,
-          8
+          4,
+          10
         ],
         "clues": {
           "3": {
             "text": "Ego (1,2)",
             "solution": "I am"
           },
-          "7": {
+          "4": {
             "text": "Determiner (3)",
             "solution": "the"
           },
-          "8": {
+          "10": {
             "text": "Sea creature (6)",
             "solution": "walrus"
           }
