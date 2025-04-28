@@ -1,21 +1,14 @@
-/* Custom styles (identical to the provided version) */
-        body {
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* Vertically center the grid */
-            margin: 0;
-            background-color: #f3f4f6; /* Tailwind gray-100 */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+}
 
-        /* Add this new style for the header */
-        h1.text-4xl {
-        font-family: 'Allerta Stencil', sans-serif;
-        font-weight: 400;
-        font-size: clamp(1.5rem, 5vw, 2.25rem); /* Scale between 1.5rem and 2.25rem */
-    }
-            #help-button {
+h1.text-4xl {
+    font-family: 'Allerta Stencil', sans-serif;
+    font-weight: 700;
+}
+
+#help-button {
     transition: background-color 0.3s ease;
 }
 
@@ -37,142 +30,177 @@
         transform: translateY(0);
     }
 }
-        }
-        @keyframes shake { 
-            0%, 100% { transform: translateX(0); } 
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); } 
-            20%, 40%, 60%, 80% { transform: translateX(6px); }
-        }
-        .shake { animation: shake 0.5s ease-in-out; }
-        .clue-box-container {
-    width: 100%; /* Allow flexibility within the grid */
-    aspect-ratio: 1; /* Ensure square boxes */
-    min-height: 80px; /* Set a minimum height for smaller screens */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-}
-        .clue-box-inner { position: relative; width: 100%; height: 100%; min-height: 100px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
-        .clue-box-container.is-flipped .clue-box-inner { transform: rotateY(180deg); }
-        .clue-box-front, .clue-box-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.75rem; border: 2px solid #d1d5db; border-radius: 0.375rem; background-color: #ffffff; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); font-size: clamp(0.75rem, 2.5vw, 1rem); /* Scale font size dynamically */}
-        .clue-box-back { background-color: #f0f9ff; border-color: #7dd3fc; transform: rotateY(180deg); }
-        .clue-box-back input { width: 90%; padding: 4px 8px; border: 1px solid #cbd5e1; border-radius: 0.25rem; margin-bottom: 5px; text-align: center; }
-        .clue-box-back input.input-error { border-color: #ef4444; background-color: #fee2e2; }
-        .clue-box-back button { padding: 3px 10px; font-size: 0.8rem; background-color: #3b82f6; color: white; border: none; border-radius: 0.25rem; cursor: pointer; }
-        .clue-box-back button:hover { background-color: #2563eb; }
-        .word-revealed .clue-box-front { background-color: #f0f9ff; border-color: #7dd3fc; font-weight: 500; color: #0369a1; }
-        .word-revealed .clue-box-inner { cursor: pointer; }
-        .selected .clue-box-front { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); }
-        .quote-solved .clue-box-front { background-color: #d1fae5 !important; border-color: #10b981 !important; color: #047857 !important; opacity: 0.8; font-weight: normal; box-shadow: none !important; }
-        .quote-solved .clue-box-inner { cursor: default !important; }
-        .empty-box .clue-box-front { background-color: #e5e7eb; border-color: #d1d5db; cursor: not-allowed; }
-        .empty-box .clue-box-inner { cursor: not-allowed; }
-        .sequence-counter {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background-color: #3b82f6;
-            color: white;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        .clear-selection-btn {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .clear-selection-btn:hover {
-            background-color: #dc2626;
-        }
-        .clear-selection-btn:disabled {
-            background-color: #fca5a5;
-            cursor: not-allowed;
-        }
-        .check-sequence-btn {
-            margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #10b981;
-            color: white;
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .check-sequence-btn:hover {
-            background-color: #059669;
-        }
-        .check-sequence-btn:disabled {
-            background-color: #a7f3d0;
-            cursor: not-allowed;
-        }
 
+@keyframes shake { 
+    0%, 100% { transform: translateX(0); } 
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); } 
+    20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
 
-        
-        #clue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Dynamic column sizes */
-            gap: 0.5rem; /* Adjustable gap */
-            width: 100%;
-            max-width: 100%; /* Ensure it doesn't overflow */
-            overflow-x: auto; /* Enable horizontal scrolling */
-            display: grid;
-            grid-auto-flow: column; /* Allow columns to fill horizontally */
-            margin: 1rem auto; /* Add spacing above and below the grid */
+.shake {
+    animation: shake 0.5s ease-in-out;
 }
-        }
-        @media (max-width: 640px) {
-            #clue-grid {
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Smaller columns for mobile */
-            gap: 0.25rem; /* Reduce gap on smaller screens */
-            overflow-x: visible; /* Disable scrolling on larger screens */
-        }
-}
-        .clue-box-front, .clue-box-back {
-            padding: 8px; /* Add padding for spacing */
-            font-size: 0.875rem; /* Adjust font size */
-            word-wrap: break-word; /* Ensure long words break */
-            overflow-wrap: break-word; /* Ensure proper wrapping */
-            text-align: center; /* Center align text */
-}
-        @media (max-width: 640px) {
-            .clue-box-front, .clue-box-back {
-            font-size: 0.75rem; /* Smaller font size for mobile */
-            padding: 4px; /* Reduce padding */
-        }
-}
-        .clue-box-container {
+
+.clue-box-container {
     perspective: 1000px;
-    min-height: 80px; /* Ensure minimum height for larger clues */
+    min-height: 100px;
 }
 
 .clue-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.clue-box-container.is-flipped .clue-box-inner {
+    transform: rotateY(180deg);
+}
+
+.clue-box-front, .clue-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center text vertically */
     align-items: center;
-    min-height: 80px;
+    justify-content: center;
+    border: 1px solid #d1d5db;
+}
+
+.clue-box-back {
+    background-color: #f0f9ff;
+    border-color: #7dd3fc;
+    transform: rotateY(180deg);
+}
+
+.clue-box-back input {
+    width: 90%;
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.25rem;
+    margin-bottom: 5px;
     text-align: center;
 }
-@media (max-width: 640px) {
-    .clue-box-container {
-        min-height: 60px; /* Adjust minimum height for mobile */
-    }
-    .clue-box-inner {
-        min-height: 60px;
-    }
+
+.clue-box-back input.input-error {
+    border-color: #ef4444;
+    background-color: #fee2e2;
+}
+
+.clue-box-back button {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.clue-box-back button:hover {
+    background-color: #2563eb;
+}
+
+.word-revealed .clue-box-front {
+    background-color: #f0f9ff;
+    border-color: #7dd3fc;
+    font-weight: 500;
+    color: #0369a1;
+}
+
+.word-revealed .clue-box-inner {
+    cursor: pointer;
+}
+
+.selected .clue-box-front {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.quote-solved .clue-box-front {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #047857 !important;
+    opacity: 0.8;
+    font-weight: normal;
+    box-shadow: none !important;
+}
+
+.quote-solved .clue-box-inner {
+    cursor: default !important;
+}
+
+.empty-box .clue-box-front {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.empty-box .clue-box-inner {
+    cursor: not-allowed;
+}
+
+.sequence-counter {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.clear-selection-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.clear-selection-btn:hover {
+    background-color: #dc2626;
+}
+
+.clear-selection-btn:disabled {
+    background-color: #fca5a5;
+    cursor: not-allowed;
+}
+
+.check-sequence-btn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.check-sequence-btn:hover {
+    background-color: #059669;
+}
+
+.check-sequence-btn:disabled {
+    background-color: #a7f3d0;
+    cursor: not-allowed;
 }
