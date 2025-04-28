@@ -205,23 +205,23 @@
         ],
         "clues": {
           "1": {
-            "text": "Twice (6)",
+            "text": "Halve (6)",
             "solution": "Double"
           },
           "2": {
-            "text": "Hard work (4)",
+            "text": "Rest (4)",
             "solution": "toil"
           },
           "3": {
-            "text": "Repeat previous word (6)",
+            "text": "Single (6)",
             "solution": "double"
           },
           "4": {
-            "text": "Plus (3)",
+            "text": "But (3)",
             "solution": "and"
           },
           "6": {
-            "text": "Problem (7)",
+            "text": "Ease (7)",
             "solution": "trouble"
           }
         }
@@ -239,27 +239,27 @@
         ],
         "clues": {
           "5": {
-            "text": "Just, or beautiful (4)",
+            "text": "Ugly (4)",
             "solution": "Fair"
           },
           "7": {
-            "text": "Same as box 5 (4)",
+            "text": "Unfair (4)",
             "solution": "fair"
           },
           "8": {
-            "text": "Third person of 'to be' (2)",
+            "text": "Isn't' (2)",
             "solution": "is"
           },
           "9": {
-            "text": "Ugly or offensive (4)",
+            "text": "Lovely (4)",
             "solution": "foul"
           },
           "10": {
-            "text": "Same as box 9 (4)",
+            "text": "Inoffensive (4)",
             "solution": "foul"
           },
           "11": {
-            "text": "And (3)",
+            "text": "But (3)",
             "solution": "and"
           }
         }
