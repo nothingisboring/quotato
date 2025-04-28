@@ -48,17 +48,17 @@ h1.text-4xl {
 }
 
 .clue-box-container {
-    width: 100%; /* Allow the box to stretch within its grid cell */
-    aspect-ratio: 1; /* Ensure square boxes */
-    min-height: 80px; /* Set a minimum height for the boxes */
+    width: 100%; /* Stretch to fill grid cell */
+    aspect-ratio: 1; /* Maintain square shape */
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 @media (max-width: 640px) {
     .clue-box-container {
-        min-height: 60px; /* Reduce minimum height for smaller screens */
+        min-height: 60px; /* Ensure minimum height on smaller screens */
     }
 }
 
@@ -226,16 +226,16 @@ h1.text-4xl {
 
 #clue-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Explicitly define 4 columns */
-    gap: 1rem; /* Add spacing between grid items */
-    width: 100%; /* Ensure grid takes up full container width */
-    max-width: 600px; /* Limit the grid's maximum width */
-    margin: 1rem auto; /* Add spacing above and below */
+    grid-template-columns: repeat(4, 1fr); /* Default to 4 columns for larger screens */
+    gap: 1rem; /* Space between grid items */
+    width: 100%; /* Stretch grid to fill container */
+    max-width: 600px; /* Limit maximum width */
+    margin: 0 auto; /* Center the grid horizontally */
 }
 
 @media (max-width: 640px) {
     #clue-grid {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Flexible columns for small screens */
-        gap: 0.5rem; /* Reduce spacing on smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for portrait mode on smaller screens */
+        gap: 0.5rem; /* Reduce gap for smaller screens */
     }
 }
