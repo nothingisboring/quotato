@@ -551,11 +551,12 @@ function handleClueSubmit(boxId) {
     const input = container.querySelector('.clue-box-back input');
     const front = container.querySelector('.clue-box-front');
     const clueData = gameData.getClueDataByBoxId(boxId);
-    const guess = input.value.trim();
+    const guess = input.value.trim(); // Trim user input
     
     if (!clueData || !guess) return;
     
-    if (guess.toLowerCase() === clueData.solution.toLowerCase()) {
+    // Compare trimmed and case-normalized strings
+    if (guess.toLowerCase() === clueData.solution.trim().toLowerCase()) {
         clueData.solved = true;
         front.textContent = clueData.solution;
         container.classList.add('word-revealed');
