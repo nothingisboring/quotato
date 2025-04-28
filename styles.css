@@ -72,6 +72,7 @@ h1.text-4xl {
     align-items: center;
     justify-content: center;
     border: 1px solid #d1d5db;
+    background-color: #ffffff;
 }
 
 .clue-box-back {
