@@ -279,18 +279,15 @@ async function loadPuzzleData() {
         const today = new Date();
         const monthDay = `${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
 
-        // Find today's puzzle or use fallback
-        let selectedPuzzle;  // Declare the variable only once
-        
-        // First try to find a puzzle specifically for this date
-        selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
+       // Find today's puzzle or use fallback
+let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
 
-        if (!selectedPuzzle) {
-            // Use the day of year as a fallback
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-            const puzzleIndex = dayOfYear % puzzlesData.length;
-            selectedPuzzle = puzzlesData[puzzleIndex];
-        }
+if (!selectedPuzzle) {
+    // Use the day of year as a fallback
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    const puzzleIndex = dayOfYear % puzzlesData.length;
+    selectedPuzzle = puzzlesData[puzzleIndex];
+}
 
         gameData = {
             ...selectedPuzzle,
