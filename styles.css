@@ -87,8 +87,9 @@ h1.text-4xl {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #d1d5db;
-    background-color: #ffffff;
+    border: 2px solid #d1d5db; /* Slightly thicker border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a polished look */
 }
 
 .clue-box-back {
