@@ -235,19 +235,7 @@ async function loadPuzzleData() {
             throw new Error('Puzzles data is undefined or malformed');
         }
 
-        // Instead of selecting one puzzle, process all puzzles
-        puzzlesData.forEach(puzzle => {
-            console.log('Processing puzzle:', puzzle);
-            // Add logic to display or use each puzzle
-        });
-
-        displayMessage('Puzzles loaded successfully!', 'text-green-600');
-    } catch (error) {
-        console.error('Error loading puzzle data:', error);
-        displayMessage('Error loading puzzles. Please try again later.', 'text-red-600');
-    }
-}
-        gameData = {
+   gameData = {
             ...selectedPuzzle,
             getClueDataByBoxId: function(id) {
                 for (const quote of this.quotes) { 
@@ -295,7 +283,20 @@ async function loadPuzzleData() {
     console.error('Error loading puzzle data:', error);
     displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
 }
+        
+        // Instead of selecting one puzzle, process all puzzles
+        puzzlesData.forEach(puzzle => {
+            console.log('Processing puzzle:', puzzle);
+            // Add logic to display or use each puzzle
+        });
 
+        displayMessage('Puzzles loaded successfully!', 'text-green-600');
+    } catch (error) {
+        console.error('Error loading puzzle data:', error);
+        displayMessage('Error loading puzzles. Please try again later.', 'text-red-600');
+    }
+}
+     
         /**
  * Initializes the game board.
  */
