@@ -81,8 +81,8 @@ function getQueryParam(name) {
  */
 function getTodaysPuzzleId() {
     // Get a deterministic puzzle based on the date
-    const today = new Date();
-    const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const today = new Date().toLocaleDateString('en-GB'); // Format as DD-MM-YYYY
+    const todaysPuzzle = puzzles.find(puzzle => puzzle.dateMatch === today);
     
     // We'll use a simple hash function to get a value from the date string
     let hash = 0;
@@ -107,11 +107,11 @@ async function loadPuzzleData() {
         }
 
         // Get today's date in MM-DD format
-        const today = new Date();
-        const monthDay = `${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+        const today = new Date().toLocaleDateString('en-GB'); // Format as DD-MM-YYYY
+        const todaysPuzzle = puzzles.find(puzzle => puzzle.dateMatch === today);.padStart(2, '0')}`;
 
        // Find today's puzzle or use fallback
-let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
+let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === today);
 
 if (!selectedPuzzle) {
     // Use the day of year as a fallback
