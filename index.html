@@ -19,6 +19,28 @@
         font-family: 'Outfit', sans-serif;
         font-weight: 700;
     }
+            #help-button {
+    transition: background-color 0.3s ease;
+}
+
+#help-modal {
+    z-index: 50;
+}
+
+#help-modal .bg-white {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
         }
         @keyframes shake { 
             0%, 100% { transform: translateX(0); } 
@@ -125,7 +147,25 @@
         <button id="submit-bonus" class="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">Submit Guess</button>
         <div id="bonus-result" class="mt-3 h-6 font-medium"></div>
     </div>
+<!-- Help Button -->
+<div id="help-button" class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg cursor-pointer hover:bg-blue-700">
+    <span class="text-xl font-bold">?</span>
+</div>
 
+<!-- Help Modal -->
+<div id="help-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-md shadow-lg p-6 max-w-md w-full">
+        <h2 class="text-xl font-bold mb-4">How to Play</h2>
+        <p class="text-gray-700 mb-4">
+            Solve the clues and join the solutions together to form famous quotations from poems, novels, or films. 
+            Clues could be antonyms or synonyms of the quote, quick crossword, or cryptic crossword clues. 
+            Puzzles get harder throughout the week, i.e., may include a mix of clue types and less help offered (e.g., emoji, clue type, etc.).
+        </p>
+        <button id="close-help-modal" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            Close
+        </button>
+    </div>
+</div>
     <script>
         // --- Game Data (identical to the provided version) ---
         let gameData = {
@@ -691,6 +731,29 @@ function clearMessage() {
     messageAreaEl.textContent = ''; 
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const helpButton = document.getElementById('help-button');
+    const helpModal = document.getElementById('help-modal');
+    const closeHelpModal = document.getElementById('close-help-modal');
+
+    // Show the help modal
+    helpButton.addEventListener('click', () => {
+        helpModal.classList.remove('hidden');
+    });
+
+    // Close the help modal
+    closeHelpModal.addEventListener('click', () => {
+        helpModal.classList.add('hidden');
+    });
+
+    // Close the help modal when clicking outside of it
+    helpModal.addEventListener('click', (event) => {
+        if (event.target === helpModal) {
+            helpModal.classList.add('hidden');
+        }
+    });
+});
+        
 // --- Initialize Game ---
 document.addEventListener('DOMContentLoaded', loadPuzzleData);
     </script>
