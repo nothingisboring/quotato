@@ -225,7 +225,7 @@ function getTodaysPuzzleId() {
 
 async function loadPuzzleData() {
     try {
-        displayMessage('Loading puzzles...', 'text-blue-600');
+        displayMessage('Loading puzzle...', 'text-blue-600');
         const response = await fetch('puzzles.json');
         if (!response.ok) {
             throw new Error('Failed to load puzzles data');
@@ -235,7 +235,24 @@ async function loadPuzzleData() {
             throw new Error('Puzzles data is undefined or malformed');
         }
 
-   gameData = {
+        // Get today's date in MM-DD format
+        const today = new Date();
+        const monthDay = `${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+
+        // Find today's puzzle or use fallback
+        let selectedPuzzle;  // Declare the variable only once
+        
+        // First try to find a puzzle specifically for this date
+        selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === monthDay);
+
+        if (!selectedPuzzle) {
+            // Use the day of year as a fallback
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const puzzleIndex = dayOfYear % puzzlesData.length;
+            selectedPuzzle = puzzlesData[puzzleIndex];
+        }
+
+        gameData = {
             ...selectedPuzzle,
             getClueDataByBoxId: function(id) {
                 for (const quote of this.quotes) { 
@@ -275,28 +292,14 @@ async function loadPuzzleData() {
             }
         };
         
-       try {
-    totalQuotes = gameData.quotes.length;
-    initGame();
-    clearMessage();
-} catch (error) {
-    console.error('Error loading puzzle data:', error);
-    displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
-}
-        
-        // Instead of selecting one puzzle, process all puzzles
-        puzzlesData.forEach(puzzle => {
-            console.log('Processing puzzle:', puzzle);
-            // Add logic to display or use each puzzle
-        });
-
-        displayMessage('Puzzles loaded successfully!', 'text-green-600');
+        totalQuotes = gameData.quotes.length;
+        initGame();
+        clearMessage();
     } catch (error) {
         console.error('Error loading puzzle data:', error);
-        displayMessage('Error loading puzzles. Please try again later.', 'text-red-600');
+        displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
     }
 }
-     
         /**
  * Initializes the game board.
  */
