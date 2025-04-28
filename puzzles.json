@@ -266,6 +266,105 @@
       }
     ]
   },
+{
+  "id": "The Second Coming",
+  "order": 1,
+  "sourceTypeEmoji": "👹",
+  "sourceName": "Yeats",
+  "gridSize": {
+    "rows": 3,
+    "cols": 6
+  },
+  "quotes": [
+    {
+      "id": 1,
+      "solution": "Things fall apart, the centre cannot hold",
+      "correctSequence": [
+        2,
+        3,
+        5,
+        4,
+        1
+      ],
+      "clues": {
+        "1": {
+          "text": "can support it (6,4)",
+          "solution": "cannot hold"
+        },
+        "2": {
+          "text": "items (6)",
+          "solution": "things"
+        },
+        "3": {
+          "text": "come together (4,5)",
+          "solution": "Fall apart"
+        },
+        "4": {
+          "text": "edge (6)",
+          "solution": "centre"
+        },
+        "5": {
+          "text": "A (3)",
+          "solution": "the "
+        }
+      }
+    },
+    {
+      "id": 2,
+      "solution": "The best lack all conviction, while the worst   \nAre full of passionate intensity.",
+      "correctSequence": [
+        2,
+        4,
+        1,
+        7,
+        8,
+        9,
+        3,
+        6,
+        5
+      ],
+      "clues": {
+        "1": {
+          "text": "zero (4)",
+          "solution": "all "
+        },
+        "2": {
+          "text": "the worst (3,4)",
+          "solution": "the best"
+        },
+        "3": {
+          "text": "teem with (3,4,2)",
+          "solution": "are full of"
+        },
+        "4": {
+          "text": "possess (4)",
+          "solution": "lack"
+        },
+        "5": {
+          "text": "apathy (9)",
+          "solution": "intensity"
+        },
+        "6": {
+          "text": "listless (10)",
+          "solution": "passionate"
+        },
+        "7": {
+          "text": "disbelief (10)",
+          "solution": "conviction"
+        },
+        "8": {
+          "text": "yet (5)",
+          "solution": "while"
+        },
+        "9": {
+          "text": "the best (3,5)",
+          "solution": "the worst "
+        }
+      }
+    }
+  ],
+  "dateMatch": "28-04-2025"
+},
   {
     "sourceName": "The Big Lebowski",
     "dateMatch": "04-04",
