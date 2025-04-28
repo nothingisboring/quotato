@@ -363,6 +363,84 @@
       }
     }
   ],
+  "dateMatch": "29-04-2025"
+},
+  "id": "Queen",
+  "order": 1,
+  "sourceTypeEmoji": "👸",
+  "sourceName": "Queen Songs",
+  "gridSize": {
+    "rows": 4,
+    "cols": 4
+  },
+  "quotes": [
+    {
+      "id": 1,
+      "solution": "Bohemian Rhapsody",
+      "correctSequence": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "clues": {
+        "2": {
+          "text": "Zeus's powerful weapon (10) ",
+          "solution": "THUNDERBOLT"
+        },
+        "4": {
+          "text": "Farewell (7)",
+          "solution": "GOODBYE"
+        },
+        "6": {
+          "text": "Only Fools and Horses' Fool (7)",
+          "solution": "TRIGGER"
+        },
+        "8": {
+          "text": "Lively Spanish dance (8) ",
+          "solution": "FANDANGO"
+        },
+        "10": {
+          "text": "Italian astronomer (7)",
+          "solution": "GALILEO"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "solution": "Radio Gaga",
+      "correctSequence": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "clues": {
+        "1": {
+          "text": "Wireless communication device (5) ",
+          "solution": "RADIO"
+        },
+        "3": {
+          "text": "Person adored by many (4)",
+          "solution": "IDOL"
+        },
+        "5": {
+          "text": "Yadda yadda (4,4)",
+          "solution": "Blah blah"
+        },
+        "7": {
+          "text": "e.g. an annoying hum (10,5)",
+          "solution": "Background noise"
+        },
+        "9": {
+          "text": "Baby talk(4) ",
+          "solution": "GAGA"
+        }
+      }
+    }
+  ],
   "dateMatch": "28-04-2025"
 },
   {
