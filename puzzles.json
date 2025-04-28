@@ -96,7 +96,7 @@
     ]
   },
   {
-    "dateMatch": "28-04-2025",
+    "dateMatch": "2025-04-28T00:00:00Z",
     "id": "sonnet-18",
     "order": 1,
     "sourceTypeEmoji": "📜",
@@ -364,7 +364,7 @@
         }
       }
     ],
-    "dateMatch": "29-04-2025"
+    "dateMatch": "2025-04-29T00:00:00Z"
   },
   {
     "id": "the-big-lebowski",
