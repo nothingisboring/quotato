@@ -287,14 +287,15 @@ async function loadPuzzleData() {
             }
         };
         
-        totalQuotes = gameData.quotes.length;
-        initGame();
-        clearMessage();
-    } catch (error) {
-        console.error('Error loading puzzle data:', error);
-        displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
-    }
+       try {
+    totalQuotes = gameData.quotes.length;
+    initGame();
+    clearMessage();
+} catch (error) {
+    console.error('Error loading puzzle data:', error);
+    displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
 }
+
         /**
  * Initializes the game board.
  */
