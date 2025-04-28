@@ -96,6 +96,7 @@
     ]
   },
   {
+    "dateMatch": "28-04-2025",
     "id": "sonnet-18",
     "order": 1,
     "sourceTypeEmoji": "📜",
@@ -182,7 +183,6 @@
         }
       }
     ],
-      "dateMatch": "28-04-2025"
   },
   {
     "id": "macbeth",
