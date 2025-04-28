@@ -230,7 +230,7 @@ h1.text-4xl {
     gap: 1rem; /* Space between grid items */
     width: 100%; /* Stretch grid to fill container */
     max-width: 600px; /* Limit maximum width */
-    margin: 0 auto; /* Center the grid horizontally */
+    margin: 1rem auto; /* Add spacing above and below */
 }
 
 @media (max-width: 640px) {
