@@ -78,6 +78,7 @@ h1.text-4xl {
 }
 
 .clue-box-front, .clue-box-back {
+    background-color: #ffffff; /* Set background color to white */
     position: absolute;
     width: 100%;
     height: 100%;
