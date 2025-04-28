@@ -235,7 +235,7 @@ h1.text-4xl {
 
 @media (max-width: 640px) {
     #clue-grid {
-        grid-template-columns: repeat(3, 1fr); /* Adjust to 2 columns for portrait mode on smaller screens */
+        grid-template-columns: repeat(4, 1fr); /* Adjust to 2 columns for portrait mode on smaller screens */
         gap: 0.5rem; /* Reduce gap for smaller screens */
     }
 }
