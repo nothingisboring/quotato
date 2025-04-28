@@ -280,30 +280,30 @@
       "id": 1,
       "solution": "Things fall apart, the centre cannot hold",
       "correctSequence": [
-        2,
-        3,
-        5,
-        4,
-        1
+        11,
+        12,
+        14,
+        13,
+        10
       ],
       "clues": {
-        "1": {
+        "10": {
           "text": "can support it (6,4)",
           "solution": "cannot hold"
         },
-        "2": {
+        "11": {
           "text": "items (6)",
           "solution": "things"
         },
-        "3": {
+        "12": {
           "text": "come together (4,5)",
           "solution": "Fall apart"
         },
-        "4": {
+        "13": {
           "text": "edge (6)",
           "solution": "centre"
         },
-        "5": {
+        "14": {
           "text": "A (3)",
           "solution": "the "
         }
@@ -311,7 +311,7 @@
     },
     {
       "id": 2,
-      "solution": "The best lack all conviction, while the worst   \nAre full of passionate intensity.",
+      "solution": "The best lack all conviction, while the worst are full of passionate intensity.",
       "correctSequence": [
         2,
         4,
