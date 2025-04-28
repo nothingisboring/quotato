@@ -82,16 +82,12 @@ function getQueryParam(name) {
 function getTodaysPuzzleId() {
     // Get a deterministic puzzle based on the date
     const today = new Date().toLocaleDateString('en-GB'); // Format as DD-MM-YYYY
-    const todaysPuzzle = puzzles.find(puzzle => puzzle.dateMatch === today);
-    
-    // We'll use a simple hash function to get a value from the date string
     let hash = 0;
-    for (let i = 0; i < dateString.length; i++) {
-        hash = ((hash << 5) - hash) + dateString.charCodeAt(i);
+    for (let i = 0; i < today.length; i++) { // Use "today" instead of "dateString"
+        hash = ((hash << 5) - hash) + today.charCodeAt(i);
         hash |= 0; // Convert to 32bit integer
     }
-    
-    return Math.abs(hash).toString();
+    return Math.abs(hash).toString();ý
 }
 
 async function loadPuzzleData() {
@@ -106,19 +102,18 @@ async function loadPuzzleData() {
             throw new Error('Puzzles data is undefined or malformed');
         }
 
-        // Get today's date in MM-DD format
+        // Get today's date in DD-MM-YYYY format
         const today = new Date().toLocaleDateString('en-GB'); // Format as DD-MM-YYYY
-        const todaysPuzzle = puzzles.find(puzzle => puzzle.dateMatch === today);.padStart(2, '0')}`;
 
-       // Find today's puzzle or use fallback
-let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === today);
+        // Find today's puzzle or use fallback
+        let selectedPuzzle = puzzlesData.find(puzzle => puzzle.dateMatch === today);
 
-if (!selectedPuzzle) {
-    // Use the day of year as a fallback
-    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-    const puzzleIndex = dayOfYear % puzzlesData.length;
-    selectedPuzzle = puzzlesData[puzzleIndex];
-}
+        if (!selectedPuzzle) {
+            // Use the day of year as a fallback
+            const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+            const puzzleIndex = dayOfYear % puzzlesData.length;
+            selectedPuzzle = puzzlesData[puzzleIndex];
+        }
 
         gameData = {
             ...selectedPuzzle,
