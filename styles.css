@@ -1,6 +1,12 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the grid horizontally */
+    justify-content: center; /* Center the grid vertically */
+    min-height: 100vh; /* Ensure the grid is vertically centered */
+    margin: 0;
+    background-color: #f3f4f6; /* Maintain consistent background */
 }
 
 h1.text-4xl {
@@ -42,8 +48,18 @@ h1.text-4xl {
 }
 
 .clue-box-container {
-    perspective: 1000px;
-    min-height: 100px;
+    width: 100%; /* Allow the box to stretch within its grid cell */
+    aspect-ratio: 1; /* Ensure square boxes */
+    min-height: 80px; /* Set a minimum height for the boxes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .clue-box-container {
+        min-height: 60px; /* Reduce minimum height for smaller screens */
+    }
 }
 
 .clue-box-inner {
@@ -204,4 +220,20 @@ h1.text-4xl {
 .check-sequence-btn:disabled {
     background-color: #a7f3d0;
     cursor: not-allowed;
+}
+
+#clue-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Explicitly define 4 columns */
+    gap: 1rem; /* Add spacing between grid items */
+    width: 100%; /* Ensure grid takes up full container width */
+    max-width: 600px; /* Limit the grid's maximum width */
+    margin: 1rem auto; /* Add spacing above and below */
+}
+
+@media (max-width: 640px) {
+    #clue-grid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Flexible columns for small screens */
+        gap: 0.5rem; /* Reduce spacing on smaller screens */
+    }
 }
