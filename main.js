@@ -731,6 +731,15 @@ document.addEventListener('DOMContentLoaded', () => {
             helpModal.classList.add('hidden');
         }
     });
+
+ // Dynamically render the list of clue types
+    const clueTypes = ['Anagram', 'Synonym', 'General Knowledge'];
+    const clueList = document.getElementById('clue-list'); // Ensure this element exists in the HTML
+    clueTypes.forEach(type => {
+        const listItem = document.createElement('li');
+        listItem.textContent = type;
+        clueList.appendChild(listItem);
+    });
 });
         
 // --- Initialize Game ---
