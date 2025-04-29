@@ -613,9 +613,9 @@ function createConfettiEffect() {
         container.remove();
     }, 5000);
 }
-
-* Enhanced correct sequence animation
- * @param {Object} quote - The solved quote object
+/**
+ * Enhanced bonus round completion animation
+ * @param {boolean} isCorrect - Whether the answer was correct
  */
 function enhancedCorrectSequenceAnimation(quote) {
     // Create a subtle glow effect for all solved clue boxes
