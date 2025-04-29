@@ -95,34 +95,42 @@ function getTodaysPuzzleId() {
 async function loadPuzzleData() {
     try {
         displayMessage('Loading puzzle...', 'text-blue-600');
+        
+        // Fetch the puzzles.json file
         const response = await fetch('puzzles.json');
         if (!response.ok) {
             throw new Error('Failed to load puzzles data');
         }
+
         const puzzlesData = await response.json();
-        if (!Array.isArray(puzzlesData)) {
+        if (!Array.isArray(puzzlesData) || puzzlesData.length === 0) {
             throw new Error('Puzzles data is undefined or malformed');
         }
 
         // Get today's date in ISO 8601 format (YYYY-MM-DD)
         const today = new Date().toISOString().split('T')[0];
 
-        // Find today's puzzle or use fallback
+        // Find the puzzle with a matching dateMatch
         let selectedPuzzle = puzzlesData.find(puzzle => {
-            const puzzleDate = puzzle.dateMatch ? puzzle.dateMatch.split('T')[0] : null; // Extract date part
+            const puzzleDate = puzzle.dateMatch ? puzzle.dateMatch.split('T')[0] : null;
             return puzzleDate === today;
         });
 
+        // Fallback: Use the first puzzle in the list (sorted by "order")
         if (!selectedPuzzle) {
-            // Use the day of year as a fallback
-            const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-            const puzzleIndex = dayOfYear % puzzlesData.length;
-            selectedPuzzle = puzzlesData[puzzleIndex];
+            console.warn(`No puzzle found for today's date (${today}). Falling back to the first puzzle.`);
+            selectedPuzzle = puzzlesData.sort((a, b) => (a.order || 0) - (b.order || 0))[0];
         }
 
+        // If no puzzle is available at all, throw an error
+        if (!selectedPuzzle) {
+            throw new Error('No puzzles available in the dataset.');
+        }
+
+        // Update game data with the selected puzzle
         gameData = {
             ...selectedPuzzle,
-            getClueDataByBoxId: function(id) {
+            getClueDataByBoxId: function (id) {
                 for (const quote of this.quotes) {
                     if (quote.clues[id]) {
                         if (quote.clues[id].solved === undefined) {
@@ -133,7 +141,7 @@ async function loadPuzzleData() {
                 }
                 return null;
             },
-            getQuoteByBoxId: function(id) {
+            getQuoteByBoxId: function (id) {
                 for (const quote of this.quotes) {
                     if (quote.clues[id]) {
                         if (quote.quoteSolved === undefined) {
@@ -144,10 +152,10 @@ async function loadPuzzleData() {
                 }
                 return null;
             },
-            getAllUnsolvedQuotes: function() {
+            getAllUnsolvedQuotes: function () {
                 return this.quotes.filter(quote => !quote.quoteSolved);
             },
-            getAllSolvedClues: function() {
+            getAllSolvedClues: function () {
                 const solvedClueIds = [];
                 for (const quote of this.quotes) {
                     for (const clueId in quote.clues) {
@@ -167,7 +175,7 @@ async function loadPuzzleData() {
         console.error('Error loading puzzle data:', error);
         displayMessage('Error loading puzzle data. Please try again later.', 'text-red-600');
     }
-         }
+}
         /**
  * Initializes the game board.
  */
