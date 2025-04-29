@@ -10,12 +10,23 @@ body {
 }
 
 h1.text-4xl {
-    font-family: 'Allerta Stencil', sans-serif;
+    font-family: 'Expletus Sans', sans-serif;
     font-weight: 400;
 }
 
 #help-button {
     transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    color: white;
+}
+
+#help-button span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+#help-button:hover {
+    background: linear-gradient(90deg, #9333ea, #3b82f6);
 }
 
 #help-modal {
