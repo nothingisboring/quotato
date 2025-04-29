@@ -504,11 +504,13 @@ function handleCorrectSequence(quote) {
     currentSelection = [];
     updateControlsState();
     
+    // Run the enhanced animation
+    enhancedCorrectSequenceAnimation(quote);
+    
     if (solvedQuotesCount === totalQuotes) { 
         handleAllQuotesSolved(); 
     }
 }
-
 /**
  * Handles an incorrect selection sequence.
  */
@@ -537,15 +539,26 @@ function handleAllQuotesSolved() {
     displayMessage('Congratulations! All quotes found!', 'text-blue-600'); 
     bonusRoundEl.classList.remove('hidden'); 
     bonusRoundEl.classList.add('block'); 
+    
+    // Add pulse animation to the submit button
+    submitBonusButton.classList.add('pulse-button');
+    
     clearSelectionBtn.disabled = true;
     checkSequenceBtn.disabled = true;
+    
+    // Enhanced message animation
+    messageAreaEl.classList.add('message-flash');
+    setTimeout(() => {
+        messageAreaEl.classList.remove('message-flash');
+    }, 600);
 }
 
 function handleBonusSubmit() { 
     const guess = bonusGuessInput.value.trim().toLowerCase(); 
     const correctAnswer = gameData.sourceName.toLowerCase(); 
+    const isCorrect = guess === correctAnswer;
     
-    if (guess === correctAnswer) { 
+    if (isCorrect) { 
         bonusResultEl.textContent = 'Correct! Well done!'; 
         bonusResultEl.className = 'mt-3 h-6 font-medium text-green-600'; 
     } else { 
@@ -556,6 +569,9 @@ function handleBonusSubmit() {
     bonusGuessInput.disabled = true; 
     submitBonusButton.disabled = true; 
     submitBonusButton.classList.add('opacity-50', 'cursor-not-allowed'); 
+    
+    // Run the enhanced animation
+    enhancedBonusCompletionAnimation(isCorrect);
 }
 
 function displayMessage(text, colorClass) { 
@@ -567,6 +583,132 @@ function displayMessage(text, colorClass) {
 function clearMessage() { 
     messageAreaEl.textContent = ''; 
 }
+
+function createConfettiEffect() {
+    const colors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ec4899'];
+    const confettiCount = 100;
+    const container = document.createElement('div');
+    container.className = 'confetti-container';
+    document.body.appendChild(container);
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = `${Math.random() * 10 + 5}px`;
+        confetti.style.opacity = Math.random().toString();
+        confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s ease-out forwards`;
+        
+        // Rotate the confetti pieces randomly
+        const rotation = Math.random() * 360;
+        confetti.style.transform = `rotate(${rotation}deg)`;
+        
+        container.appendChild(confetti);
+    }
+    
+    // Remove the confetti container after animation completes
+    setTimeout(() => {
+        container.remove();
+    }, 5000);
+}
+
+* Enhanced correct sequence animation
+ * @param {Object} quote - The solved quote object
+ */
+function enhancedCorrectSequenceAnimation(quote) {
+    // Create a subtle glow effect for all solved clue boxes
+    quote.correctSequence.forEach(boxId => {
+        const container = document.querySelector(`.clue-box-container[data-box-id='${boxId}']`);
+        if (container) {
+            container.classList.add('quote-solved-animation');
+            // Remove the animation class after it completes
+            setTimeout(() => {
+                container.classList.remove('quote-solved-animation');
+            }, 1200);
+        }
+    });
+    
+    // Add confetti effect
+    createConfettiEffect();
+    
+    // Animate the quote display that appears in the solved quotes area
+    const quoteDisplay = solvedQuotesAreaEl.lastElementChild;
+    if (quoteDisplay) {
+        quoteDisplay.classList.add('quote-solved-animation');
+        // Remove the animation class after it completes
+        setTimeout(() => {
+            quoteDisplay.classList.remove('quote-solved-animation');
+        }, 1200);
+    }
+    
+    // Add message flash animation
+    if (messageAreaEl) {
+        messageAreaEl.classList.add('message-flash');
+        setTimeout(() => {
+            messageAreaEl.classList.remove('message-flash');
+        }, 600);
+    }
+}
+
+// --- Bonus Round Success Animation ---
+
+/**
+ * Creates a trophy icon animation when the bonus round is completed
+ */
+function createTrophyAnimation() {
+    // Create trophy element
+    const trophyContainer = document.createElement('div');
+    trophyContainer.className = 'text-center';
+    
+    const trophy = document.createElement('div');
+    trophy.className = 'trophy-icon';
+    trophy.innerHTML = '🏆';
+    
+    trophyContainer.appendChild(trophy);
+    
+    // Insert trophy before bonus result
+    const bonusResult = document.getElementById('bonus-result');
+    bonusResult.parentNode.insertBefore(trophyContainer, bonusResult);
+    
+    // Add animation class after a small delay to ensure the DOM is updated
+    setTimeout(() => {
+        trophy.classList.add('trophy-animation');
+    }, 100);
+}
+
+/**
+ * Enhanced bonus round completion animation
+ * @param {boolean} isCorrect - Whether the answer was correct
+ */
+function enhancedBonusCompletionAnimation(isCorrect) {
+    // Animate the bonus round container
+    bonusRoundEl.classList.add('game-completed-animation');
+    
+    // Remove animation class after it completes
+    setTimeout(() => {
+        bonusRoundEl.classList.remove('game-completed-animation');
+    }, 1500);
+    
+    // Add trophy animation only if the answer was correct
+    if (isCorrect) {
+        createTrophyAnimation();
+        
+        // Create full-screen celebratory effect
+        createConfettiEffect();
+    }
+    
+    // Add message flash animation
+    if (bonusResultEl) {
+        bonusResultEl.classList.add('message-flash');
+        setTimeout(() => {
+            bonusResultEl.classList.remove('message-flash');
+        }, 600);
+    }
+}
+
+// --- Integration with Existing Functions ---
 
 document.addEventListener('DOMContentLoaded', () => {
     const helpButton = document.getElementById('help-button');
