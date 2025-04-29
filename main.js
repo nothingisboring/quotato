@@ -422,6 +422,7 @@ function checkSequenceSelection() {
     for (const quote of gameData.quotes) {
         if (quote.quoteSolved) continue;
 
+        // Get the solved clue IDs for the current quote
         const solvedClueIds = Object.keys(quote.clues)
             .filter(clueId => quote.clues[clueId].solved)
             .map(id => parseInt(id));
@@ -430,7 +431,9 @@ function checkSequenceSelection() {
         const allCluesSolved = quote.correctSequence.every(id => solvedClueIds.includes(id));
         if (!allCluesSolved) continue;
 
-        if (isValidQuoteSequence(currentSelection, quote.correctSequence)) {
+        // Ensure the current selection matches the entire correctSequence
+        if (isValidQuoteSequence(currentSelection, quote.correctSequence) &&
+            currentSelection.length === quote.correctSequence.length) {
             perfectMatch = true;
             matchedQuote = quote;
             break;
