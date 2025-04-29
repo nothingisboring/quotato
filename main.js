@@ -412,31 +412,31 @@ function handleClueSubmit(boxId) {
  * Checks if the current sequence selection matches any quote.
  */
 function checkSequenceSelection() {
-    // Skip if no selection
     if (currentSelection.length === 0) {
         return;
     }
     
     let perfectMatch = false;
     let matchedQuote = null;
-    
-    // Check each quote to see if our sequence matches
+
     for (const quote of gameData.quotes) {
         if (quote.quoteSolved) continue;
-        
-        // Get just the sequence of IDs that have been solved for this quote
+
         const solvedClueIds = Object.keys(quote.clues)
             .filter(clueId => quote.clues[clueId].solved)
             .map(id => parseInt(id));
-        
-        // Check if our selection matches any complete quote's sequence
+
+        // Ensure all clues in the correctSequence are solved
+        const allCluesSolved = quote.correctSequence.every(id => solvedClueIds.includes(id));
+        if (!allCluesSolved) continue;
+
         if (isValidQuoteSequence(currentSelection, quote.correctSequence)) {
             perfectMatch = true;
             matchedQuote = quote;
             break;
         }
     }
-    
+
     if (perfectMatch && matchedQuote) {
         handleCorrectSequence(matchedQuote);
     } else {
