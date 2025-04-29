@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
  // Dynamically render the list of clue types
-    const clueTypes = ['Antonyms', 'Synonyms', 'Quick Crossword', 'Anagrams', 'or a little cryptic!'];
+    const clueTypes = ['All antonyms', 'All synonyms', 'Quick Crossword style', 'Anagrams', 'Cryptic', 'or a mixture of all these!'];
     const clueList = document.getElementById('clue-list'); // Ensure this element exists in the HTML
     clueTypes.forEach(type => {
         const listItem = document.createElement('li');
