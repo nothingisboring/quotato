@@ -1,6 +1,6 @@
 [
   {
-    "dateMatch": "2025-04-28"
+    "dateMatch": "2025-04-28",
     "id": "hamlet",
     "order": 1,
     "sourceTypeEmoji": "🎭",
@@ -186,7 +186,7 @@
     ],
   },
   {
-    "dateMatch": "2025-04-30"
+    "dateMatch": "2025-04-30",
     "id": "macbeth",
     "order": 3,
     "sourceTypeEmoji": "👑",
@@ -270,7 +270,7 @@
     ]
   },
   {
-    "dateMatch": "2025-05-01"
+    "dateMatch": "2025-05-01",
     "id": "The Second Coming",
     "order": 4,
     "sourceTypeEmoji": "👹",
@@ -369,7 +369,7 @@
     ],
       },
   {
-     "dateMatch": "2025-05-02"
+     "dateMatch": "2025-05-02",
     "id": "the-big-lebowski",
     "order": 5,
     "sourceTypeEmoji": "🎬",
@@ -492,7 +492,6 @@
         }
       }
     ],
-    "dateMatch": "2025-05-01"
-  },
+      },
     }
 ]
