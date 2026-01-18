@@ -58,24 +58,24 @@
       },
       {
         "id": 3,
-        "solution": "A fellow of infinite jest.",
+        "solution": "Donald Trump",
         "correctSequence": [10, 9, 12, 11],
         "clues": {
           "9": {
-            "text": "prep. (2)",
-            "solution": "of"
+            "text": "Mafia boss (3)",
+            "solution": "Don"
           },
           "10": {
-            "text": "tenured professor, Brit. (1, 6)",
-            "solution": "a fellow"
+            "text": "Old old minus uranium". (3)",
+            "solution": "ald"
           },
           "11": {
-            "text": "joke (4)",
-            "solution": "jest"
+            "text": "fart' (5",
+            "solution": "Trump"
           },
           "12": {
-            "text": "lots and lots (8)",
-            "solution": "infinite"
+            "text": "Exclamation (1)",
+            "solution": "!"
           }
         }
       }
